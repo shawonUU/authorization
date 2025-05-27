@@ -41,7 +41,7 @@ class RoleController extends Controller
     }
 
     public function edit($id)
-    {
+    { 
         $role = $this->roleService->getRoleById($id);
         $permissions = $this->permissionService->getPermissions();
         return view('pages.roles.edit', compact('role','permissions'));

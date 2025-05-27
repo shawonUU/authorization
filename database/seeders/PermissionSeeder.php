@@ -9,7 +9,7 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        $permissions = ['create_post', 'edit_post', 'delete_post', 'view_post'];
+        $permissions = ['authorization', 'create_post', 'edit_post', 'delete_post', 'view_post'];
 
         foreach ($permissions as $permission) {
             Permission::updateOrCreate(['name' => $permission]);

@@ -33,10 +33,10 @@
 
 							<li class="menu-title"><span>Post</span></li>
 							<li>
-								<a href="{{route('permissions.index')}}"><i class="fe fe-lock"></i> <span> Post List</span></a>
+								<a href="{{route('posts.index')}}"><i class="fe fe-lock"></i> <span> Post List</span></a>
 							</li>
 							<li>
-								<a href="{{route('roles.index')}}" class=""><i class="fe fe-shield"></i> <span> Create Post</span></a>
+								<a href="{{route('posts.create')}}" class=""><i class="fe fe-shield"></i> <span> Create Post</span></a>
 							</li>
 							
 						</ul>
