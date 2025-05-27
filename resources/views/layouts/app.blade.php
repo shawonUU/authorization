@@ -10,7 +10,9 @@
 		
 			@include('layouts.header')
 			
-            @include('layouts.sidebar')
+			@auth
+            	@include('layouts.sidebar')
+			@endauth
 			<!-- Page Wrapper -->
 			<div class="page-wrapper">
 				<div class="content container-fluid " style="margin:0; padding-bottom:0; ">
@@ -32,7 +34,6 @@
 		<!-- /Main Wrapper -->
 
 		
-        @include('layouts.right_sidebar')
 
 		<!-- jQuery -->
 		<script src="{{asset('assets')}}/js/jquery-3.7.1.min.js" type="19fcc0aa7d222f8686a0e100-text/javascript"></script>

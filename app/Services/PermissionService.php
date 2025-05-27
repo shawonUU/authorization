@@ -8,22 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class PermissionService
 {
-    public function assignPermissionToRole(string $permissionName, string $roleName): void
-    {
-        $role = Role::where('name', $roleName)->firstOrFail();
-        $permission = Permission::where('name', $permissionName)->firstOrFail();
-
-        $role->permissions()->syncWithoutDetaching($permission);
-    }
-
-    public function removePermissionFromRole(string $permissionName, string $roleName): void
-    {
-        $role = Role::where('name', $roleName)->firstOrFail();
-        $permission = Permission::where('name', $permissionName)->firstOrFail();
-
-        $role->permissions()->detach($permission);
-    }
-
     public function getPermissions(){
         return Permission::all();
     }
@@ -45,9 +29,9 @@ class PermissionService
         return $permission;
     }
 
-    public function deletePermission(string $name): void
+    public function deleteRole($id): void
     {
-        $permission = Permission::where('name', $name)->firstOrFail();
+        $permission = Permission::where('id', $id)->firstOrFail();
         $permission->delete();
     }
 }

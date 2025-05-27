@@ -8,18 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class RoleService
 {
-    public function assignRoleToUser(User $user, string $roleName): void
-    {
-        $role = Role::where('name', $roleName)->firstOrFail();
-        $user->roles()->syncWithoutDetaching($role);
-    }
-
-    public function removeRoleFromUser(User $user, string $roleName): void
-    {
-        $role = Role::where('name', $roleName)->firstOrFail();
-        $user->roles()->detach($role);
-    }
-
     public function getAllRoles()
     {
         return Role::all();

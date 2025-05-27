@@ -40,12 +40,6 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Role created successfully.');
     }
 
-    public function show($id)
-    {
-        $role = $this->roleService->getRoleById($id);
-        return view('roles.show', compact('role'));
-    }
-
     public function edit($id)
     {
         $role = $this->roleService->getRoleById($id);

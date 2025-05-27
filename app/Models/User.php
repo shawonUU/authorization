@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
+use App\Models\Permission;
 
 class User extends Authenticatable
 {
@@ -52,7 +53,7 @@ class User extends Authenticatable
     }
 
     public function permissions() {
-        return $this->roles->flatMap->permissions->unique('id');
+        return $this->roles()->with('permissions')->get()->flatMap(fn($role) => $role->permissions)->unique('id');
     }
 
     // Helper methods

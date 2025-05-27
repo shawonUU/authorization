@@ -1,25 +1,8 @@
 <!-- Header -->
 <div class="header header-one">
-				<a href=""  class="d-inline-flex d-sm-inline-flex align-items-center d-md-inline-flex d-lg-none align-items-center device-logo">
-					 <img src="{{asset('assets')}}/img/logo.png" class="img-fluid logo2" alt="Logo">
-				</a>
+				
 				<div class="main-logo d-inline float-start d-lg-flex align-items-center d-none d-sm-none d-md-none">
-					<div class="logo-white">
-						<a href="">
-							<img src="{{asset('assets')}}/img/logo.png" class="img-fluid logo-blue" alt="Logo">
-						</a>
-						<a href="">
-							<img src="{{asset('assets')}}/img/logo.png" class="img-fluid logo-small" alt="Logo">
-						</a>
-					</div>
-					<div class="logo-color">
-						<a href="">
-							<img src="{{asset('assets')}}/img/logo.png" class="img-fluid logo-blue" alt="Logo">
-						</a>
-						<a href="">
-							<img src="{{asset('assets')}}/img/logo.png" class="img-fluid logo-small" alt="Logo">
-						</a>
-					</div>
+					
 				</div>
 				<!-- Sidebar Toggle -->
 				 @auth
@@ -181,7 +164,7 @@
                                     <ul>
                                         <li class="pb-0">
 											<a onclick="document.getElementById('logoutForm').submit()" class="dropdown-item" href="javascript:void(0)">Log Out</a>
-											<form id="logoutForm" action="" method="post">
+											<form id="logoutForm" action="{{route('logout')}}" method="post">
 												@csrf
 											</form>
 										</li>

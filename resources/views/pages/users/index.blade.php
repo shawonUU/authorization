@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="content container-fluid">
@@ -36,13 +36,9 @@
                             <table class="table" id="dataTbl">
                                 <thead>
                                   <tr>
-                                    <th>#</th>                                   
-                                    <th>Image</th>
+                                    <th>#</th>      
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Type</th>
-                                    <th>status</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>
@@ -50,15 +46,9 @@
                                 @foreach ($users as $item)
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>
-                                      <img width="60px" height="60px" src="{{ asset('frontend/users/' . $item->images) }}" alt="Users Image">
-                                    </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->phone }}</td>
-                                    <td>{{ $item->roleName??'N/A' }}</td>
-                                    <td class="{{ $item->status=='1'?'text-danger':'' }}">{{ $item->status=='1'?'Active':'Inactive' }}</td>
-                                      <td><button type="button" class="btn btn-sm btn-primary waves-effect waves-light"><a href="{{ route('users.edit',$item->id) }}"><i class="fe fe-edit" style="color: #fff"></i></a></button>| <button type="button" data-bs-toggle="modal" data-bs-target="#myModal{{ $item->id }}" class="btn btn-sm btn-danger waves-effect waves-light"><i class="fe fe-trash-2"></i></button>
+                                    <td><button type="button" class="btn btn-sm btn-primary waves-effect waves-light"><a href="{{ route('users.edit',$item->id) }}"><i class="fe fe-edit" style="color: #fff"></i></a></button>| <button type="button" data-bs-toggle="modal" data-bs-target="#myModal{{ $item->id }}" class="btn btn-sm btn-danger waves-effect waves-light"><i class="fe fe-trash-2"></i></button>
                                       
                                     </td>
                                     <!-- Default Modals -->

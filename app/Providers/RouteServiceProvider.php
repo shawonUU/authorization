@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Http\Middleware\RoleMiddleware;
-use App\Http\Middleware\PermissionMiddleware;
+// use App\Http\Middleware\RoleMiddleware;
+// use App\Http\Middleware\PermissionMiddleware;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,9 +24,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
         });
 
-        // Register middleware aliases here:
-        Route::aliasMiddleware('role', RoleMiddleware::class);
-        Route::aliasMiddleware('permission', PermissionMiddleware::class);
+        // // Register middleware aliases here:
+        // Route::aliasMiddleware('role', RoleMiddleware::class);
+        // Route::aliasMiddleware('permission', PermissionMiddleware::class);
     }
 
     protected function configureRateLimiting(): void
