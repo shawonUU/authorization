@@ -33,12 +33,9 @@ class RoleService
     public function createRole(array $data): Role
     {
         return DB::transaction(function () use ($data) {
-            // Create the role
             $role = Role::create([
                 'name' => $data['name'],
             ]);
-
-            // Attach permissions if provided
             if (!empty($data['permissions']) && is_array($data['permissions'])) {
                 $role->permissions()->attach($data['permissions']);
             }
@@ -50,13 +47,26 @@ class RoleService
     public function updateRole($id, array $data)
     {
         $role = Role::findOrFail($id);
-        $role->update($data);
+
+        $role->update([
+            'name' => $data['name'],
+        ]);
+
+        if (isset($data['permissions']) && is_array($data['permissions'])) {
+            $role->permissions()->sync($data['permissions']);
+        } else {
+            $role->permissions()->detach();
+        }
+
         return $role;
     }
 
     public function deleteRole($id)
     {
-        $role = Role::findOrFail($id);
-        return $role->delete();
+        DB::transaction(function () use ($id) {
+            $role = Role::findOrFail($id);
+            $role->permissions()->detach();
+            $role->delete();
+        });
     }
 }

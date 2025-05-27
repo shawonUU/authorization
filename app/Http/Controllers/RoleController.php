@@ -33,6 +33,8 @@ class RoleController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:100|unique:roles,name',
+            'permissions' => 'nullable|array',
+            'permissions.*' => 'exists:permissions,id',
         ]);
         $this->roleService->createRole($request->all());
         return redirect()->route('roles.index')->with('success', 'Role created successfully.');
@@ -47,16 +49,20 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = $this->roleService->getRoleById($id);
-        return view('roles.edit', compact('role'));
+        $permissions = $this->permissionService->getPermissions();
+        return view('pages.roles.edit', compact('role','permissions'));
     }
 
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:100|unique:roles,name,' . $id,
+            'permissions' => 'nullable|array',
+            'permissions.*' => 'exists:permissions,id',
         ]);
 
-        $this->roleService->updateRole($id, $request->all());
+        $this->roleService->updateRole($id, $validated);
+
         return redirect()->route('roles.index')->with('success', 'Role updated successfully.');
     }
 

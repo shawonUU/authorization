@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="content container-fluid">
@@ -7,22 +7,6 @@
 							<h5>Edit Role</h5>
 						</div>	
 					</div>
-            @if ($errors->any())
-                <div class="alert alert-danger" id="validation-error-alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-
-                <script>
-                    // Set a timeout to hide the alert after 2000 milliseconds (2 seconds)
-                    setTimeout(function () {
-                        document.getElementById('validation-error-alert').style.display = 'none';
-                    }, 3000);
-                </script>
-            @endif
             <div class="row">
                 <div class="col-lg-12">
                   <div class="card">
@@ -30,7 +14,7 @@
                       <h4 class="card-title mb-0 flex-grow-1">Edit Eole</h4>
                       <div class="flex-shrink-0">
                         <div class="form-check form-switch form-switch-right form-switch-md">
-                            <a href="{{ route('role.index') }}" class="btn btn-info">Role List</a>
+                            <a href="{{ route('roles.index') }}" class="btn btn-info">Role List</a>
                         </div>
                       </div>
                     </div>
@@ -38,7 +22,7 @@
                     <div class="card-body">
                       <div class="live-preview">
                         <div class="row gy-4">
-                            <form action="{{ route('role.update',$role->id) }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('roles.update',$role->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">                                
@@ -55,9 +39,7 @@
                                                 <div class="form-check form-switch" style="padding: 0px;">
                                                     <label for="permission_{{ $item->id }}">{{ $item->name }}</label><br>
                                                     <input class="form-check-input mb-2" style="margin-left: 0.5em !important;" type="checkbox" role="switch" name="permissions[]" id="permission_{{ $item->id }}" value="{{ $item->id }}" 
-                                                    @if($roleHasPermissions->pluck('permission_id')->contains($item->id))
-                                                        checked
-                                                    @endif
+                                                    {{ $role->permissions->contains($item->id) ? 'checked' : '' }}
                                                     />
                                                 </div>
                                             </div>
