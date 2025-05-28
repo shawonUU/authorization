@@ -28,7 +28,7 @@ Route::get('/', function () {
     return view('pages.index');
 })->middleware('auth')->name('dashboard');
 
-Route::middleware(['role:admin'])->group(function () {
+Route::middleware(['permission:authorization'])->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('users', UserController::class);

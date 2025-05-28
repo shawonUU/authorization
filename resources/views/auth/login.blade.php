@@ -75,6 +75,9 @@
 									</div>
 									<div class="input-block mb-3">
 										<div class="row">
+											<div class="col-12 mb-3 ">
+												<span>Email: admin@gmail.com</span> &nbsp; &nbsp;<span>Password: 123456</span>
+											</div>
 											<div class="col-6 d-none">
 												<div class="form-check custom-checkbox">
 													<input type="checkbox" class="form-check-input" id="cb1">

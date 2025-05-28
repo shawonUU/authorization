@@ -53,6 +53,6 @@ class PermissionController extends Controller
     public function destroy($id)
     {
         $this->permissionService->deleteRole($id);
-        return redirect()->route('roles.index')->with('success', 'Permission deleted successfully.');
+        return redirect()->route('permissions.index')->with('success', 'Permission deleted successfully.');
     }
 }

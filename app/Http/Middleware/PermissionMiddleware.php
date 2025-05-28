@@ -18,7 +18,6 @@ class PermissionMiddleware
      */
     public function handle(Request $request, Closure $next, string $permission): Response
     {
-        // Check if user is authenticated and has the required permission
         if (!auth()->check() || !auth()->user()->hasPermission($permission)) {
             abort(403, 'Unauthorized');
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -12,7 +13,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-       // $this->middleware('auth');
+        if (!Auth::check()) return redirect()->route('login');
     }
 
     public function index()

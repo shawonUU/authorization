@@ -56,7 +56,6 @@ class User extends Authenticatable
         return $this->roles()->with('permissions')->get()->flatMap(fn($role) => $role->permissions)->unique('id');
     }
 
-    // Helper methods
     public function hasRole($role) {
         return $this->roles->contains('name', $role);
     }

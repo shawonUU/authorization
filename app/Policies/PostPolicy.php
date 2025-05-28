@@ -20,7 +20,7 @@ class PostPolicy
 
     public function create(User $user): bool
     {
-        return $user->hasRole('admin') || $user->hasPermission('creat_post');
+        return $user->hasRole('admin') || $user->hasPermission('create_post');
     }
 
     public function update(User $user, Post $post): bool
